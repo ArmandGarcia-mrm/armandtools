@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JiraSync Project Manager</title>
-    <!-- Tailwind for styling (Note: For production, a build step is recommended) -->
+    <!-- Tailwind for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -13,16 +13,19 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
         }
         /* Fallback UI while React loads */
         #root:empty::before {
-            content: 'Loading JiraSync Pro...';
+            content: 'Initializing JiraSync Pro...';
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
             color: #64748b;
             font-weight: 500;
+            background-color: #f8fafc;
         }
     </style>
     <script type="importmap">
@@ -43,13 +46,21 @@
     <div id="root"></div>
     <!-- 
       IMPORTANT FOR GITHUB PAGES:
-      Browsers cannot run .tsx files. This app works here because the platform transpiles it.
-      To host on GitHub Pages properly:
-      1. Install Node.js on your computer.
-      2. Run 'npm create vite@latest' and choose React + TypeScript.
-      3. Move these files into the 'src' folder of the new project.
-      4. Run 'npm run build' and upload the 'dist' folder to GitHub.
+      Standard browsers cannot run .tsx files.
+      If you see "MIME type" errors in your console on GitHub Pages, 
+      it is because you are trying to run raw TypeScript in a browser.
+      
+      TO DEPLOY TO GITHUB:
+      1. Use a tool like Vite (https://vitejs.dev/guide/)
+      2. Run 'npm run build'
+      3. Upload the 'dist' folder contents to your repository.
     -->
-    <script type="module" src="index.tsx"></script>
+    <script type="module" src="./index.tsx"></script>
+    <script>
+      // Diagnostic helper for GitHub Pages
+      if (window.location.hostname.includes('github.io') && !window.location.pathname.endsWith('/')) {
+        console.warn("JiraSync: You might be missing a trailing slash in your URL. Try adding / at the end of the address bar.");
+      }
+    </script>
 </body>
 </html>
