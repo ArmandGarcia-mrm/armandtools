@@ -1,0 +1,5 @@
+{
+  "name": "JiraSync Project Manager",
+  "description": "A streamlined project management tool designed to parse pasted Jira tickets and manage your workflow with AI-powered data extraction.",
+  "requestFramePermissions": []
+}
