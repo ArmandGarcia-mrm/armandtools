@@ -13,6 +13,16 @@
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
         }
+        /* Loading fallback */
+        #root:empty::before {
+            content: 'Loading JiraSync...';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #64748b;
+            font-size: 1.1rem;
+        }
     </style>
 <script type="importmap">
 {
@@ -29,6 +39,8 @@
 </head>
 <body>
     <div id="root"></div>
+    <!-- This tag was missing! It tells the browser where to start the app -->
+    <script type="module" src="./index.tsx"></script>
 <script type="module" src="/index.tsx"></script>
 </body>
 </html>
