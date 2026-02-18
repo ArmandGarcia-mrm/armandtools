@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JiraSync Project Manager</title>
+    <!-- Tailwind for styling (Note: For production, a build step is recommended) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -13,34 +14,42 @@
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
         }
-        /* Loading fallback */
+        /* Fallback UI while React loads */
         #root:empty::before {
-            content: 'Loading JiraSync...';
+            content: 'Loading JiraSync Pro...';
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
             color: #64748b;
-            font-size: 1.1rem;
+            font-weight: 500;
         }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "@google/genai": "https://esm.sh/@google/genai@0.2.1",
+    "recharts": "https://esm.sh/recharts@2.15.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
-    "recharts": "https://esm.sh/recharts@^3.7.0"
+    "react/": "https://esm.sh/react@^19.2.4/"
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body>
     <div id="root"></div>
-    <!-- This tag was missing! It tells the browser where to start the app -->
-    <script type="module" src="./index.tsx"></script>
-<script type="module" src="/index.tsx"></script>
+    <!-- 
+      IMPORTANT FOR GITHUB PAGES:
+      Browsers cannot run .tsx files. This app works here because the platform transpiles it.
+      To host on GitHub Pages properly:
+      1. Install Node.js on your computer.
+      2. Run 'npm create vite@latest' and choose React + TypeScript.
+      3. Move these files into the 'src' folder of the new project.
+      4. Run 'npm run build' and upload the 'dist' folder to GitHub.
+    -->
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>
